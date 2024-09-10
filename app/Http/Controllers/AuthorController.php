@@ -19,4 +19,18 @@ public function store(Request $request){
     $author = Author::create($request->all());
     return redirect('/author');
 }
+
+public function show(Author $author){
+    return view('author.show', ['author' => $author]);
+}
+
+public function edit(Author $author){
+    return view('author.edit', ['author' => $author]);
+}
+
+public function update(Request $request, Author $author){
+    $author->update($request->all());
+    return redirect('/author/'.$author->id);
+}
+
 }
