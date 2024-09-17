@@ -18,9 +18,15 @@
             <input type="number" value="{{ $book->numOfPages }}" name="numOfPages">
         </div>
         <div>
-            <span>Autor</span>
-            <input type="text" value="{{ $book->author->name }}" name="nameAuthor">
-        </div>
+    <span>Nome do Autor</span>
+    <select name="author_id">
+      @foreach(\App\Models\Author::all() as $author)
+        <option value="{{$author->id}}"
+          {{ $author->id == $book->Author->id ? 'selected' : '' }}
+          >{{$author->name}}</option>
+      @endforeach
+    </select>
+    
         <button type="submite">Salvar</button>
     </form>
 </body>
